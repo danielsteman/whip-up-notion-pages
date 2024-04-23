@@ -9,8 +9,8 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "slate.900",
-        color: "white",
+        bgGradient: "linear(to-b, orange.200, purple.300)",
+        color: "slate.900",
       },
     },
   },
@@ -19,7 +19,7 @@ const theme = extendTheme({
       variants: {
         borderDrop: {
           variant: "outline",
-          color: "gray.100",
+          color: "slate.900",
           borderWidth: 0.5,
           borderColor: "gray.600",
           _hover: { borderColor: "black" },
@@ -46,16 +46,17 @@ const theme = extendTheme({
     },
     black: "#0c1017",
     primary: {
-      "50": "#f3f8fe",
-      "100": "#d0e1fd",
-      "200": "#a7c7fb",
-      "300": "#74a6f9",
-      "400": "#5693f7",
-      "500": "#377ae7",
-      "600": "#2f67c3",
-      "700": "#26539c",
-      "800": "#204684",
-      "900": "#173360",
+      50: "#fff7ed",
+      100: "#ffedd5",
+      200: "#fed7aa",
+      300: "#fdba74",
+      400: "#fb923c",
+      500: "#f97316",
+      600: "#ea580c",
+      700: "#c2410c",
+      800: "#9a3412",
+      900: "#7c2d12",
+      950: "#431407",
     },
     slate: {
       50: "#f8fafc",

@@ -7,7 +7,7 @@ const SignUpButton = () => {
     <Link href="signup">
       <Button
         variant="outline"
-        color="white"
+        color="slate.900"
         _hover={{ bgColor: "primary.500", borderColor: "rgba(0,0,0,0)" }}
       >
         Sign up

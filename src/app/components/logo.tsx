@@ -15,8 +15,8 @@ const Logo = () => (
       {/* Define the linear gradient */}
       <defs>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#377ae7" />
-          <stop offset="100%" stopColor="#74a6f9" />
+          <stop offset="0%" stopColor="#fdba74" />
+          <stop offset="100%" stopColor="#f97316" />
         </linearGradient>
       </defs>
 

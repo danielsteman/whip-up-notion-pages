@@ -101,7 +101,7 @@ export default function Home() {
           <Flex flexDir="row" align="center" gap={2}>
             <Logo />
             <Heading size="md" fontWeight={1000}>
-              ingestify
+              Whip
             </Heading>
           </Flex>
           <Spacer />
@@ -114,7 +114,7 @@ export default function Home() {
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.
           </Heading>
-          <Text fontSize="xl" color="gray.400">
+          <Text fontSize="xl" color="slate.900">
             Lorem Ipsum has been the industrys standard dummy text ever since
             the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book.
