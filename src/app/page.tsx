@@ -1,113 +1,139 @@
-import Image from "next/image";
+"use client";
+
+import {
+  Button,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  IconButton,
+  Spacer,
+  Text,
+  useBreakpointValue,
+  useDisclosure,
+  useTheme,
+  VStack,
+} from "@chakra-ui/react";
+import { Link } from "@chakra-ui/next-js";
+import Logo from "./components/logo";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import LoginButton from "./components/loginbutton";
+import SignUpButton from "./components/signupbutton";
+
+const Navigation = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const dropDown = useBreakpointValue({ base: true, md: false }) ?? true;
+  const items = ["Products", "Solutions", "Pricing", "Company"];
+  if (dropDown) {
+    return (
+      <>
+        <IconButton
+          onClick={onOpen}
+          variant="ghost"
+          p={0}
+          size="md"
+          icon={<HamburgerIcon />}
+          aria-label={"menu"}
+          fontSize="24px"
+          color="white"
+        ></IconButton>
+        <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent bg="rgba(0,0,0,0.1)" blur="2px">
+            <DrawerBody>
+              <VStack gap={2}>
+                <LoginButton />
+                <SignUpButton />
+                {items.map((item) => (
+                  <Link
+                    key={item}
+                    href={item.toLowerCase()}
+                    _hover={{ color: "gray.400" }}
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </VStack>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </>
+    );
+  } else {
+    return (
+      <>
+        {items.map((item) => (
+          <Link
+            key={item}
+            href={item.toLowerCase()}
+            _hover={{ color: "gray.400" }}
+          >
+            {item}
+          </Link>
+        ))}
+        <Divider orientation="vertical" height="25px" />
+        <LoginButton />
+        <SignUpButton />
+      </>
+    );
+  }
+};
 
 export default function Home() {
+  const theme = useTheme();
+  const maxWidth = theme.breakpoints.xl;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <Grid
+      height="100%"
+      templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+      gap={4}
+      p={4}
+      mx="auto"
+      maxWidth={maxWidth}
+    >
+      <GridItem colSpan={{ base: 1, md: 2 }}>
+        <Flex flexDir="row" gap={8} align="center">
+          <Flex flexDir="row" align="center" gap={2}>
+            <Logo />
+            <Heading size="md" fontWeight={1000}>
+              ingestify
+            </Heading>
+          </Flex>
+          <Spacer />
+          <Navigation />
+        </Flex>
+      </GridItem>
+      <GridItem py={8} pr={8}>
+        <Flex flexDir="column" gap={8}>
+          <Heading fontSize="5xl" fontWeight={800}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </Heading>
+          <Text fontSize="xl" color="gray.400">
+            Lorem Ipsum has been the industrys standard dummy text ever since
+            the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </Text>
+          <Flex flexDir="row" gap={8}>
+            <Link href="workspace">
+              <Button p={6} px={10} colorScheme="primary">
+                Get started
+              </Button>
+            </Link>
+            <Button p={6} variant="borderDrop">
+              See products
+            </Button>
+          </Flex>
+        </Flex>
+      </GridItem>
+      <GridItem borderColor="gray" borderWidth={1}>
+        2
+      </GridItem>
+    </Grid>
   );
 }
