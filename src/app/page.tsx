@@ -53,7 +53,7 @@ const Navigation = () => {
                   <Link
                     key={item}
                     href={item.toLowerCase()}
-                    _hover={{ color: "gray.400" }}
+                    _hover={{ color: "primary.600" }}
                   >
                     {item}
                   </Link>
