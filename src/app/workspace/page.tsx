@@ -26,6 +26,7 @@ import Logo from "../components/logo";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
 import SignOutButton from "../components/signoutbutton";
+import { ChangeEvent, useState } from "react";
 
 const DrawerLink: React.FC<{ href: string; text: string } & LinkProps> = ({
   href,
@@ -48,6 +49,12 @@ const DrawerLink: React.FC<{ href: string; text: string } & LinkProps> = ({
 
 const Workspace = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [url, setUrl] = useState<string>("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
+  };
+
   return (
     <Flex flexDir="column" minH="100vh">
       <Box>
@@ -77,7 +84,13 @@ const Workspace = () => {
           </HStack>
           <form>
             <InputGroup>
-              <Input placeholder="Enter recipe URL" color="slate.900" />
+              <Input
+                type="url"
+                value={url}
+                onChange={handleChange}
+                placeholder="Enter recipe URL"
+                color="slate.900"
+              />
               <InputRightElement px={1} w="fit-content">
                 <Button size="sm" px={4} colorScheme="primary" type="submit">
                   Go!
