@@ -22,7 +22,6 @@ import {
   InputGroup,
   InputRightElement,
 } from "@chakra-ui/react";
-import { UploadFile } from "../upload-file";
 import Logo from "../components/logo";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
@@ -50,7 +49,7 @@ const DrawerLink: React.FC<{ href: string; text: string } & LinkProps> = ({
 const Workspace = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
+    <Flex flexDir="column" minH="100vh">
       <Box>
         <Flex flexDir="row" p={2} px={4} bgColor={"slate.800"} align="center">
           <Logo />
@@ -107,7 +106,7 @@ const Workspace = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </Flex>
   );
 };
 
