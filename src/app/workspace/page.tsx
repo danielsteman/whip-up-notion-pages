@@ -26,7 +26,8 @@ import Logo from "../components/logo";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
 import SignOutButton from "../components/signoutbutton";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
 
 const DrawerLink: React.FC<{ href: string; text: string } & LinkProps> = ({
   href,
@@ -53,6 +54,17 @@ const Workspace = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUrl(event.target.value);
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      await axios.post("/api/make-recipe", { url });
+      console.log("Recipe created successfully!");
+    } catch (error) {
+      console.error("Error creating recipe:", error);
+    }
   };
 
   return (
@@ -82,7 +94,7 @@ const Workspace = () => {
             </VStack>
             <Spacer />
           </HStack>
-          <form>
+          <form onSubmit={handleSubmit}>
             <InputGroup>
               <Input
                 type="url"
