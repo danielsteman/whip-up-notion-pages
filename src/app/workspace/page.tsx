@@ -17,6 +17,10 @@ import {
   Spacer,
   useDisclosure,
   VStack,
+  Input,
+  Button,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 import { UploadFile } from "../upload-file";
 import Logo from "../components/logo";
@@ -61,14 +65,27 @@ const Workspace = () => {
             color="white"
           ></IconButton>
         </Flex>
-        <HStack p={8}>
-          <VStack align="left">
-            <Heading size="md">Databases</Heading>
-            <Text>A list of all your databases</Text>
-          </VStack>
-          <Spacer />
-          <UploadFile />
-        </HStack>
+        <VStack p={8} align="left" gap="4">
+          <HStack w="100%">
+            <VStack align="left">
+              <Heading size="md">Recipes</Heading>
+              <Text>
+                A list of all the web pages your converted to Notion pages.
+              </Text>
+            </VStack>
+            <Spacer />
+          </HStack>
+          <form>
+            <InputGroup>
+              <Input placeholder="Enter recipe URL" color="slate.900" />
+              <InputRightElement px={1} w="fit-content">
+                <Button size="sm" px={4} colorScheme="primary">
+                  Go!
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </form>
+        </VStack>
       </Box>
       <Drawer isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />

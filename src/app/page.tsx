@@ -125,9 +125,6 @@ export default function Home() {
                 Get started
               </Button>
             </Link>
-            <Button p={6} variant="borderDrop">
-              See products
-            </Button>
           </Flex>
         </Flex>
       </GridItem>
