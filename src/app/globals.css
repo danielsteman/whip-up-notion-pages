@@ -5,6 +5,5 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh; /* 100% of viewport height */
   overflow: auto; /* Enable scrolling if content exceeds viewport */
 }
