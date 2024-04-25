@@ -40,6 +40,7 @@ const DrawerLink: React.FC<{ href: string; text: string } & LinkProps> = ({
       rounded={4}
       p={1}
       px={2}
+      color="white"
     >
       {text}
     </Link>
@@ -79,7 +80,7 @@ const Workspace = () => {
             <InputGroup>
               <Input placeholder="Enter recipe URL" color="slate.900" />
               <InputRightElement px={1} w="fit-content">
-                <Button size="sm" px={4} colorScheme="primary">
+                <Button size="sm" px={4} colorScheme="primary" type="submit">
                   Go!
                 </Button>
               </InputRightElement>
@@ -91,7 +92,7 @@ const Workspace = () => {
         <DrawerOverlay />
         <DrawerContent bgColor="slate.800">
           <DrawerHeader>
-            <DrawerCloseButton />
+            <DrawerCloseButton color="white" />
           </DrawerHeader>
           <DrawerBody py={4}>
             <Flex flexDir="column" gap={2} h="100%">
