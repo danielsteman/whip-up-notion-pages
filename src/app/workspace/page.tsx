@@ -121,7 +121,7 @@ const Workspace = () => {
           </DrawerHeader>
           <DrawerBody py={4}>
             <Flex flexDir="column" gap={2} h="100%">
-              <DrawerLink href="/" text="Your databases" />
+              <DrawerLink href="/" text="Your recipes" />
               <DrawerLink href="/" text="Settings" />
               <Spacer />
               <HStack>

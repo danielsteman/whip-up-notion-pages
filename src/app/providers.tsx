@@ -9,7 +9,8 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bgGradient: "linear(to-b, orange.200, purple.300)",
+        // bgGradient: "linear(to-b, orange.200, purple.300)",
+        bgColor: "stone.100",
         color: "slate.900",
         minH: "100vh",
       },
