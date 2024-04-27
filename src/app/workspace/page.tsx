@@ -60,7 +60,8 @@ const Workspace = () => {
     event.preventDefault();
 
     try {
-      await axios.post("/api/make-recipe", { url });
+      const response = await axios.post("/api/make-recipe", { url });
+      console.log(response);
       console.log("Recipe created successfully!");
     } catch (error) {
       console.error("Error creating recipe:", error);
