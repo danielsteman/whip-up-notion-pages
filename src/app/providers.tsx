@@ -11,6 +11,7 @@ const theme = extendTheme({
       body: {
         bgGradient: "linear(to-b, orange.200, purple.300)",
         color: "slate.900",
+        minH: "100vh",
       },
     },
   },
