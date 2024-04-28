@@ -21,6 +21,7 @@ import {
   Button,
   InputGroup,
   InputRightElement,
+  useTheme,
 } from "@chakra-ui/react";
 import Logo from "../components/logo";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -52,6 +53,9 @@ const Workspace = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [url, setUrl] = useState<string>("");
 
+  const theme = useTheme();
+  const maxWidth = theme.breakpoints.xl;
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUrl(event.target.value);
   };
@@ -69,50 +73,56 @@ const Workspace = () => {
   };
 
   return (
-    <Flex flexDir="column" minH="100vh">
-      <Box>
-        <Flex flexDir="row" p={2} px={4} bgColor={"slate.800"} align="center">
-          <Logo />
+    <Flex flexDir="column" minH="100vh" align="center" w="100%">
+      <Flex
+        flexDir="row"
+        p={2}
+        px={4}
+        bgColor={"slate.800"}
+        align="center"
+        w="100%"
+      >
+        <Logo />
+        <Spacer />
+        <IconButton
+          onClick={onOpen}
+          p={0}
+          size="md"
+          icon={<HamburgerIcon />}
+          aria-label={"menu"}
+          fontSize="24px"
+          bgColor="slate.700"
+          color="white"
+        ></IconButton>
+      </Flex>
+      <VStack p={8} align="center" gap="4" h="100%" w="100%">
+        <HStack>
+          <VStack align="left">
+            <Heading size="md">Recipes</Heading>
+            <Text>
+              A list of all the web pages your converted to Notion pages.
+            </Text>
+          </VStack>
           <Spacer />
-          <IconButton
-            onClick={onOpen}
-            p={0}
-            size="md"
-            icon={<HamburgerIcon />}
-            aria-label={"menu"}
-            fontSize="24px"
-            bgColor="slate.700"
-            color="white"
-          ></IconButton>
-        </Flex>
-        <VStack p={8} align="left" gap="4">
-          <HStack w="100%">
-            <VStack align="left">
-              <Heading size="md">Recipes</Heading>
-              <Text>
-                A list of all the web pages your converted to Notion pages.
-              </Text>
-            </VStack>
-            <Spacer />
-          </HStack>
-          <form onSubmit={handleSubmit}>
-            <InputGroup>
-              <Input
-                type="url"
-                value={url}
-                onChange={handleChange}
-                placeholder="Enter recipe URL"
-                color="slate.900"
-              />
-              <InputRightElement px={1} w="fit-content">
-                <Button size="sm" px={4} colorScheme="primary" type="submit">
-                  Go!
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </form>
-        </VStack>
-      </Box>
+        </HStack>
+        <form onSubmit={handleSubmit}>
+          <InputGroup w="100%">
+            <Input
+              type="url"
+              value={url}
+              onChange={handleChange}
+              placeholder="Enter recipe URL"
+              color="slate.900"
+            />
+            <InputRightElement px={1} w="fit-content">
+              <Button size="sm" px={4} colorScheme="primary" type="submit">
+                Go!
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+        </form>
+      </VStack>
+
       <Drawer isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bgColor="slate.800">
