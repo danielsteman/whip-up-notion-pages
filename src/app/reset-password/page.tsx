@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Text,
   Heading,
   VStack,
   FormControl,
@@ -11,11 +10,8 @@ import {
   InputGroup,
   InputRightElement,
   Center,
-  HStack,
-  Spacer,
 } from "@chakra-ui/react";
 import Logo from "../components/logo";
-import { Link } from "@chakra-ui/next-js";
 import React from "react";
 
 const ResetPassword = () => {
