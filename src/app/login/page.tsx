@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Text,
   Heading,
   VStack,
   FormControl,
@@ -14,15 +13,10 @@ import {
   Spacer,
   Checkbox,
   Box,
-  Divider,
-  AbsoluteCenter,
 } from "@chakra-ui/react";
 import Logo from "../components/logo";
 import { Link } from "@chakra-ui/next-js";
 import React from "react";
-import { GrGoogle } from "react-icons/gr";
-import { BsGoogle } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
 import GoogleLoginButton from "../components/googleloginbutton";
 
 const Login = () => {
